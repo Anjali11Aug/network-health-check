@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Network Monitoring Dashboard</title>
+    <meta http-equiv="refresh" content="5">
+
+    <style>
+        body {
+            font-family: Arial;
+            padding: 40px;
+            background-color: #f4f6f8;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background: white;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #333;
+            color: white;
+        }
+
+        .UP {
+            color: green;
+            font-weight: bold;
+        }
+
+        .DOWN {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Network Infrastructure Monitoring Dashboard</h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>IP</th>
+            <th>Status</th>
+            <th>Latency</th>
+            <th>Last Checked</th>
+        </tr>
+
+        {% for d in devices %}
+        <tr>
+            <td>{{ d.name }}</td>
+            <td>{{ d.ip }}</td>
+            <td class="{{ d.status }}">{{ d.status }}</td>
+            <td>{{ d.latency }}</td>
+            <td>{{ d.last_checked }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
